@@ -39,31 +39,35 @@ for (let i = 0; i < images.length; i++) {
 }
 
 // 4.
-const imagesCollection = document.getElementsByClassName('item')
+const imagesCollection = document.getElementsByClassName('item');
 
-imagesCollection[0].classList.remove('hide')
+imagesCollection[0].classList.remove('hide');
 
 // 6.
 
 btnNext.addEventListener('click', function() {
-  imagesCollection[counterImage].classList.add('hide')
+  imagesCollection[counterImage].classList.add('hide');
+  btnPrev.classList.remove('hide')
 
 
-  counterImage++
-  imagesCollection[counterImage].classList.remove('hide')
+  counterImage += 1
+  imagesCollection[counterImage].classList.remove('hide');
 
   
-  // if(counterImage = imagesCollection.length - 1){
-  //   btnNext.classList.add('hide')
-  // }
-  // console.log(counterImage,imagesCollection.length - 1);
-})
+  if(counterImage === imagesCollection.length - 1){
+    btnNext.classList.add('hide')
+  }
+})  
 
 btnPrev.addEventListener('click', function() {
   imagesCollection[counterImage].classList.add('hide')
-  counterImage--
+  btnNext.classList.remove('hide')
+  counterImage-= 1
   imagesCollection[counterImage].classList.remove('hide')
-  console.log(imagesCollection.length - 1);
+  
+  if(counterImage === 0){
+    btnPrev.classList.add('hide')
+  }
   
 })
 
