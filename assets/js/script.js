@@ -44,6 +44,7 @@ const imagesCollection = document.getElementsByClassName('item');
 imagesCollection[0].classList.remove('hide');
 
 // 6.
+const imageLimt = imagesCollection.length - 1;
 
 btnNext.addEventListener('click', function() {
   imagesCollection[counterImage].classList.add('hide');
@@ -51,23 +52,36 @@ btnNext.addEventListener('click', function() {
 
 
   counterImage += 1
+  if(counterImage <= imageLimt){
   imagesCollection[counterImage].classList.remove('hide');
-
-  
-  if(counterImage === imagesCollection.length - 1){
-    btnNext.classList.add('hide')
+  } else {
+    counterImage = 0
+    imagesCollection[0].classList.remove('hide');
   }
-})  
+
+  //soluzione funzionante con bottone nascosto
+  // if(counterImage === imagesCollection.length - 1){
+    //   btnNext.classList.add('hide')
+    // }
+  })  
+
 
 btnPrev.addEventListener('click', function() {
   imagesCollection[counterImage].classList.add('hide')
   btnNext.classList.remove('hide')
   counterImage-= 1
-  imagesCollection[counterImage].classList.remove('hide')
-  
-  if(counterImage === 0){
-    btnPrev.classList.add('hide')
+
+  if(counterImage >= 0){
+  imagesCollection[counterImage].classList.remove('hide');
+  } else {
+    counterImage = imageLimt
+    imagesCollection[imageLimt].classList.remove('hide');
   }
+  
+  //soluzione funzionante con bottone nascosto
+  // if(counterImage === 0){
+  //   btnPrev.classList.add('hide')
+  // }
   
 })
 
